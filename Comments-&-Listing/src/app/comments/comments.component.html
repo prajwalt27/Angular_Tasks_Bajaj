@@ -1,0 +1,53 @@
+<div class="container">
+    <div *ngIf="bug">
+        <h2>{{ bug.bugTitle }}</h2>
+        <p><strong>Module Name:</strong> {{ bug.moduleName }}</p>
+        <p><strong>Bug Details:</strong> {{ bug.bugDetails }}</p>
+        <p><strong>Device Details:</strong> {{ bug.deviceDetails }}</p>
+        <p><strong>Image/Video:</strong></p>
+        <img src="data:image/png;base64,{{ bug.imageOrVideo }}" alt="Bug Screenshot" width="100px" height="100px">
+    </div>
+
+    <div class="flex row mt-3">
+        <!-- Add Comment -->
+        <h2 class="col-sm-4 text-primary" style=" text-align: left; margin-right: 2.5rem;">Add Comment</h2>
+        <!-- Drop down menu -->
+        <div class="col btns mx-1" style="text-align: right; margin-right: 2.5rem;">
+            <button class="btn btn-success" type="button" (click)="onOpenClick()"
+                [disabled]="isCommentSectionVisible">Open</button>
+            <button class="btn btn-primary" type="button" (click)="onCloseClick()"
+                [disabled]="!isCommentSectionVisible">Close</button>
+            <button class="btn btn-danger" type="button" (click)="onRetestClick()"
+                [disabled]="isCommentSectionVisible">Retest</button>
+        </div>
+    </div>
+
+
+    <div class="row " style="margin-bottom: 0.15rem; ">
+        <!-- comment area -->
+        <div class="col-md-11.5 txt" style=" margin: 2.5rem;">
+            <textarea rows="5" cols="50" [(ngModel)]="comment" class="form-control frm"
+                [disabled]="!isCommentSectionVisible"></textarea>
+            <br>
+            <!-- comment button -->
+            <button (click)="post()" class="btn btn-primary cmnt" [disabled]="!isCommentSectionVisible">Submit</button>
+        </div>
+
+
+    </div>
+    <div class="container1">
+        <!-- comment title -->
+        <h2 style="text-align:center; margin-top: 1rem;">Comments</h2>
+        <!-- comment section -->
+        <div class="col-md-11.5 align-items-center "
+            style="border: solid black 2px; height: 100px; background-color: aliceblue; border-radius: 5px; height: auto; margin:1.5rem ;">
+            <div *ngFor="let c of comments" class="card mt-3 " [hidden]="!isCommentSectionVisible">
+                <div class="card-body cmmnts "
+                    style="text-align: left; padding-left: 0.5rem; font-size: 15px; margin-bottom: 0.5rem;">
+
+                    <p>{{ c }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

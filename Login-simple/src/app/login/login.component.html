@@ -1,0 +1,15 @@
+<p class="text-center">login Page</p>
+<div class="container">
+    <form>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control input-lg" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label input-lg">Password</label>
+            <input type="password" class="form-control" id="password" name="password" minlength="8" required
+                pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W).{8,}">
+        </div>
+        <button type="submit" class="btn btn-primary ">Login</button>
+    </form>
+</div>
